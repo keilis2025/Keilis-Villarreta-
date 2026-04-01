@@ -1,0 +1,83 @@
+### Mezcla de todas las clases - Programa Empresarial Súperate
+# --- Programa Empresarial Súperate ---
+
+print("Bienvenido al Programa Empresarial Súperate\n")
+
+# 1. Asistencia de estudiantes
+print("\n---Asistencia de estudiantes del programa Súperate---")
+total_estudiantes = int(input("Total estudiantes inscritos: "))
+asistieron_hoy  = int(input("¿Cuántos estudiantes asistieron hoy?: "))
+faltaron = total_estudiantes - asistieron_hoy
+porcentaje_asistencia = int((asistieron_hoy / total_estudiantes) * 100)
+
+print("\n---REPORTE DE ASISTENCIA DEL PROGRAMA SÚPERATE---")
+print(f"Asistieron: {asistieron_hoy}, Faltaron: {faltaron}, Asistencia: {porcentaje_asistencia}%")
+
+# 2. Caja registradora (dinero inicial de la cafetería)
+print("\n---Caja Registradora de la Cafetería---")
+saldo = 500
+print("\nSaldo inicial en caja:", saldo)
+retiro = int(input("¿Cuánto retirar para gastos del día?: "))
+if retiro <= saldo:
+    saldo -= retiro
+    print("Retiro exitoso, saldo actual:", saldo)
+else:
+    print("Fondos insuficientes.")
+
+# 3. Stock de café (venta a estudiantes)
+print("\n---Venta de café a estudiantes---")
+stock, precio, ganancia = 10, 2.5, 0
+cantidad = int(input("\n¿Cuántos cafés compraron los estudiantes hoy?: "))
+if cantidad <= stock:
+    total = cantidad * precio
+    if cantidad >= 3: total *= 0.9
+    stock -= cantidad; ganancia += total
+    print("Venta realizada:", total, "Ganancia acumulada:", ganancia)
+else:
+    print("No hay suficiente stock.")
+
+# 4. Compras a proveedores (para reabastecer cafetería)
+print("\n---Compras a proveedores para reabastecer la cafetería---")
+compra = [(101,"Azúcar",5),(102,"Leche",3.5),(103,"Café en grano",12)]
+print("\n---Compras a proveedores---")
+total_proveedores = sum([p for _,_,p in compra])
+print("Total invertido en insumos:", total_proveedores)
+
+# 5. Frase publicitaria (motivación del día)
+print("\n---Frase motivadora del día---")
+frase = input("\nEscribe una frase motivadora para los estudiantes: ")
+letra = input("Elige una letra para contar en la frase: ")
+print(f"La letra '{letra}' aparece {frase.count(letra)} veces.")
+
+# 6. Rifa entre estudiantes presentes
+print("\n---Rifa entre estudiantes para insentivarlos a seguir asistiendo---")
+numeros = sorted([int(input("Número ganador: ")) for _ in range(3)])
+print("\nNúmeros ganadores de la rifa:", numeros)
+
+# 7. Cesta de compras de estudiantes
+print("\n---Cesta de compras de estudiantes en la cafetería---")
+cesta, total_cesta = {}, 0
+for _ in range(2):
+    prod = input("\nProducto comprado por estudiante: "); precio = float(input("Precio: "))
+    cesta[prod] = precio; total_cesta += precio
+print("Cesta de compras:", cesta, "Total gastado por estudiantes:", total_cesta)
+
+# 8 y 9. Asignación de tareas a empleados/voluntarios
+print("\n--Registro de voluntarios o empleados para tareas del día--")
+empleados = {}
+for _ in range(2):
+    nombre = input("\nNombre del voluntario/empleado: ")
+    habilidad = input("Habilidad: "); horas = int(input("Horas disponibles: "))
+    tareas = input("Tareas separadas por coma: ").split(",")
+    empleados[nombre] = {"info":(habilidad,horas),"tareas":tareas}
+
+print("\n---Asignación de tareas---")
+total_horas = 0
+for n,d in empleados.items():
+    habilidad, horas = d["info"]
+    lista_tareas = ", ".join(d["tareas"])
+    print(f"{n} → Habilidad: {habilidad}, Horas: {horas}, Tareas: {lista_tareas}")
+    total_horas += horas
+print("Total de horas donadas:", total_horas)
+
+print("\n--- Fin del día en el Programa Súperate ---")
